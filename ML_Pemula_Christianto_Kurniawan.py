@@ -39,11 +39,8 @@ train_datagen = ImageDataGenerator(
                     fill_mode = 'wrap',
                     validation_split = 0.4)
 
-test_datagen = ImageDataGenerator(
+validation_datagen = ImageDataGenerator(
                     rescale=1./255,
-                    zoom_range=0.2,
-                    shear_range=0.2,
-                    horizontal_flip=True,
                     validation_split = 0.4)
 
 train_generator = train_datagen.flow_from_directory(
@@ -52,7 +49,7 @@ train_generator = train_datagen.flow_from_directory(
       subset='training',
       class_mode='categorical')
 
-validation_generator = test_datagen.flow_from_directory(
+validation_generator = validation_datagen.flow_from_directory(
       base_dir,
       target_size=(100, 100),
       subset='validation',
@@ -85,13 +82,22 @@ model.compile(
     metrics=['accuracy']
 )
 
+class myCallback(tf.keras.callbacks.Callback):
+  def on_epoch_end(self, epoch, logs={}):
+    if((logs.get('accuracy')>0.98) and (logs.get('val_accuracy')>0.98)):
+      print("\nAkurasi dan Val Akurasi telah mencapai >98%!")
+      self.model.stop_training = True
+
+callbacks = myCallback()
+
 history = model.fit(
       train_generator,
       steps_per_epoch=25,  # berapa batch yang akan dieksekusi pada setiap epoch
       epochs=25,
       validation_data=validation_generator, # menampilkan akurasi pengujian data validasi
       validation_steps=5,  # berapa batch yang akan dieksekusi pada setiap epoch
-      verbose=2)
+      verbose=2,
+      callbacks=[callbacks])
 
 # Commented out IPython magic to ensure Python compatibility.
 import numpy as np
