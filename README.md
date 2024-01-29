@@ -18,8 +18,8 @@ This project is a submission for the [Belajar Machine Learning untuk Pemula](htt
 Follow these steps to run the project on Google Colab:
 1. Open Google Colab.
 2. Click on File > Open notebook.
-3. Choose the GitHub tab and enter the repository URL: [Url]
-4. Select the [Url] notebook.
+3. Choose the GitHub tab and enter the repository URL: https://github.com/ChristiantoKape/machinelearning_pemula_dicoding
+4. Select the ```ML_Pemula_Christianto_Kurniawan.ipynb``` notebook.
 5. Run each code cell sequentially to train the model and make predictions.
 
 ### Learning Evaluation
