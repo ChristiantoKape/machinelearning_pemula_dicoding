@@ -28,6 +28,6 @@ This submission received 4/5 stars with the following evaluation:
 1.  Has not implemented other techniques not taught, such as dropout, plot, callback, and so on. However, **the improvement has already** incorporated the application of callback techniques.
 2. Data Augmentation on validation data should not be used to increase data and produce different images. **The correction has** been made by removing Data Augmentation on validation data.
 
-### Sertificate
+### Certificate
 ------------------------------------------------------------
 The course completion certificate is [here](https://www.dicoding.com/certificates/L4PQ64YM2PO1).
